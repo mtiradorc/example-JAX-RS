@@ -102,5 +102,10 @@ public class ClienteDto {
     public void setId_usuario(Long id_usuario) {
         this.id_usuario = id_usuario;
     }
+
+    @Override
+    public String toString() {
+        return "ClienteDto{" + "id=" + id + ", apellido=" + apellido + ", fechaRegistro=" + fechaRegistro + ", correo=" + correo + ", nombre=" + nombre + ", id_usuario=" + id_usuario + '}';
+    }
     
 }

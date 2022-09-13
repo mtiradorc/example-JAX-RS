@@ -12,6 +12,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 
 /**
@@ -26,17 +27,28 @@ public class clienteDao implements IClienteDao {
 
     @Override
     public List<ClienteDto> getCliente() {
-        
-        
-       StoredProcedureQuery storedProcedure =
-           emf.createStoredProcedureQuery("cliente_all");
-       // execute SP
-       storedProcedure.execute();
-       // get result
-       List<ClienteDto> result = (List<ClienteDto>) storedProcedure.getResultList();
-       System.out.println("result is: " + result);
-        
-       return result;
+        List<ClienteDto> clienteDtos = new ArrayList<>();
+        //clienteDtos.add(new ClienteDto(1l, "Tirador", "01/12/1995", "m@prueba.com", "Miguel", null));
+        try {
+            StoredProcedureQuery storedProcedure
+                    = emf.createStoredProcedureQuery("cliente_all");
+            // execute SP
+            storedProcedure.execute();
+
+            // get result
+            clienteDtos = storedProcedure.getResultList();
+            /*if (result != null && !result.isEmpty()) {
+                for (int i = 0; i < result.size(); i++) {
+                    result.get(i)
+                }
+            }*/
+            System.out.println("result is: " + clienteDtos.toString());
+
+        } catch (Exception e) {
+            e.fillInStackTrace();
+        }
+
+        return clienteDtos;
     }
 
 }
