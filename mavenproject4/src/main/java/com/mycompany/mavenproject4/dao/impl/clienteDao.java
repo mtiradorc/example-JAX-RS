@@ -27,28 +27,24 @@ public class clienteDao implements IClienteDao {
 
     @Override
     public List<ClienteDto> getCliente() {
-        List<ClienteDto> clienteDtos = new ArrayList<>();
-        //clienteDtos.add(new ClienteDto(1l, "Tirador", "01/12/1995", "m@prueba.com", "Miguel", null));
+        List<ClienteDto> listCliente = null;
         try {
-            StoredProcedureQuery storedProcedure
-                    = emf.createStoredProcedureQuery("cliente_all");
-            // execute SP
-            storedProcedure.execute();
+            // get all the objects from Employee table
+            listCliente = emf.createNativeQuery("select * from cliente").getResultList();
 
-            // get result
-            clienteDtos = storedProcedure.getResultList();
-            /*if (result != null && !result.isEmpty()) {
-                for (int i = 0; i < result.size(); i++) {
-                    result.get(i)
+            if (listCliente == null) {
+                System.out.println("No employee found . ");
+            } else {
+                for (ClienteDto empl : listCliente) {
+                    System.out.println("Employee name= " + empl.getNombre() + ", Usuario id " + empl.getId_usuario());
                 }
-            }*/
-            System.out.println("result is: " + clienteDtos.toString());
+            }
 
         } catch (Exception e) {
             e.fillInStackTrace();
         }
 
-        return clienteDtos;
+        return listCliente;
     }
 
 }
