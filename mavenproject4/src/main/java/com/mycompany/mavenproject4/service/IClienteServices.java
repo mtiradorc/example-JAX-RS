@@ -18,4 +18,6 @@ public interface IClienteServices {
     
     public List<ClienteDto> getCliente();
     
+    public ClienteDto getClienteById(Long id);
+    
 }

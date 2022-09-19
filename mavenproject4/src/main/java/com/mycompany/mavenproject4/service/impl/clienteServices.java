@@ -28,6 +28,11 @@ public class clienteServices implements IClienteServices{
     public List<ClienteDto> getCliente() {
         return clienteDao.getCliente();
     }
+
+    @Override
+    public ClienteDto getClienteById(Long id) {
+        return clienteDao.getClienteById(id);
+    }
     
     
 }

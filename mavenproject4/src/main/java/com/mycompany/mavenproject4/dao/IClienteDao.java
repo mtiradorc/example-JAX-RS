@@ -17,4 +17,6 @@ import javax.ejb.Local;
 public interface IClienteDao {
     
     public List<ClienteDto> getCliente();
+    
+    public ClienteDto getClienteById(Long id);
 }
