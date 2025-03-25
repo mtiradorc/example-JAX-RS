@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject4.dao;
+package com.mycompany.proyect.client.services;
 
-import com.mycompany.mavenproject4.dto.ClienteDto;
+import com.mycompany.proyect.client.dto.ClienteDto;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,7 +14,7 @@ import javax.ejb.Local;
  * @author MTIRADORC
  */
 @Local
-public interface IClienteDao {
-    
-    public List<ClienteDto> getCliente();
+public interface IClienteServices {
+
+    public List<ClienteDto> getListCliente();
 }

@@ -3,50 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject4.dto;
+package com.mycompany.proyect.client.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author MTIRADORC
  */
-
-@Entity
-@Table(name = ClienteDto.TABLE_NAME)
 public class ClienteDto {
-    
-    public static final String TABLE_NAME= "CLIENTE";
-    
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+
+
     private Long id;
 
-    @Column(name = "apellido")
     private String apellido;
 
-    @Column(name = "create_at")
     private String fechaRegistro;
 
-    @Column(name = "email")
     private String correo;
 
-    @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "id_usuario")
-    private Long id_usuario;
+    private UserDto id_usuario;
 
     public ClienteDto() {
     }
 
-    public ClienteDto(Long id, String apellido, String fechaRegistro, String correo, String nombre, Long id_usuario) {
+    public ClienteDto(Long id, String apellido, String fechaRegistro, String correo, String nombre, UserDto id_usuario) {
         this.id = id;
         this.apellido = apellido;
         this.fechaRegistro = fechaRegistro;
@@ -54,7 +37,7 @@ public class ClienteDto {
         this.nombre = nombre;
         this.id_usuario = id_usuario;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -76,7 +59,8 @@ public class ClienteDto {
     }
 
     public void setFechaRegistro(String fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+        DateFormat outputFormat  = new SimpleDateFormat("yyyy-mm-dd");
+        this.fechaRegistro = outputFormat .format(fechaRegistro);
     }
 
     public String getCorreo() {
@@ -95,12 +79,17 @@ public class ClienteDto {
         this.nombre = nombre;
     }
 
-    public Long getId_usuario() {
+    public UserDto getId_usuario() {
         return id_usuario;
     }
 
-    public void setId_usuario(Long id_usuario) {
+    public void setId_usuario(UserDto id_usuario) {
         this.id_usuario = id_usuario;
     }
-    
+
+    @Override
+    public String toString() {
+        return "ClienteDto{" + "id=" + id + ", apellido=" + apellido + ", fechaRegistro=" + fechaRegistro + ", correo=" + correo + ", nombre=" + nombre + ", id_usuario=" + id_usuario + '}';
+    }
+
 }
