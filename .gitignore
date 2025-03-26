@@ -1,5 +1,0 @@
-# ignore all logs
-*.log
-# ignore package target
-mavenproject4/target/*
-proyect-client/target/*
